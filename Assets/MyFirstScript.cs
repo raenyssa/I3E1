@@ -24,7 +24,7 @@ public class MyFirstScript : MonoBehaviour
         if (transform.position.x < -5f) move = 0.01f;
 
         // Task 3
-        transform.Rotate(0, move, 0);
+        transform.Rotate(1, move, 0);
 
         // Make the object grow larger by 0.1% every frame
         // transform.localScale = transform.localScale * 1.001f;
