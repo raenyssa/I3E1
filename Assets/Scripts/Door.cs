@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Door : MonoBehaviour
 {
@@ -7,9 +8,9 @@ public class Door : MonoBehaviour
 
     public void Interact()
     {
-        if (!isOpen) transform.Rotate(rotateAmount);
-        else transform.Rotate(rotateAmount * -1);
-
+        var animator = GetComponent<Animator>();
+        animator.SetBool("isOpen", !isOpen);
         isOpen = !isOpen;
+
     }
 }

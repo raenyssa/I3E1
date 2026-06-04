@@ -5,7 +5,19 @@ public class Coincollisionscript : MonoBehaviour
 {
     int score = 0;
 
+    bool isMenuShowing = false;
+
+    public UIManager MyUIManager;
+
+    void OnMenu()
+    {
+        MyUIManager.ShowMenu(!isMenuShowing);
+        isMenuShowing = !isMenuShowing;
+    }
+
     GameObject currentCollidor;
+    GameObject lastTrigger;
+    int totalscore = 0;
 
     void OnCollisionEnter(Collision collision)
     {
@@ -22,23 +34,29 @@ public class Coincollisionscript : MonoBehaviour
 
     void OnInteract(InputValue value)
     {
-        if (currentCollidor != null)
+        print($"Interacting with {currentCollidor?.name}");
+        if(currentCollidor != null)
         {
-            print($"Interacted with {currentCollidor.name}");
-            var collectable = currentCollidor.GetComponent<Collectables>();
-            if (collectable != null)
+            var collectible = currentCollidor.GetComponent<Collectables>();
+            if(collectible != null)
             {
-                score += collectable.score;
-                print($"Score: {score}");
-                collectable.Collect();
+                print($"Interacting with {currentCollidor.name}");
+                totalscore += collectible.value;
+                MyUIManager.SetScore(totalscore);
+                Destroy(currentCollidor);
             }
+        }
+    }
 
-            var door = currentCollidor.GetComponent<Door>();
-            if (door != null)
-            {
-                print("Interacted with door");
-                door.Interact();
-            }
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.name=="finish"&&score==5)
+        {
+            print($"Final score: {score}"); 
+        }
+        else 
+        {
+            print($"Final score: {score}");
         }
     }
 }
