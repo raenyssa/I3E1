@@ -7,6 +7,7 @@ public class Collectables : MonoBehaviour
 
    public void Collect()
     {
+        GameManager.Instance.CollectCoin();
         var audio = GetComponent<AudioSource>();
         audio.Play();
 

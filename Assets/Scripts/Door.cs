@@ -11,6 +11,13 @@ public class Door : MonoBehaviour
         var animator = GetComponent<Animator>();
         animator.SetBool("isOpen", !isOpen);
         isOpen = !isOpen;
+        print("Door Interacted");
 
     }
+
+    void Update()
+{
+    if (Input.GetKeyDown(KeyCode.E))
+        Interact();
+}
 }

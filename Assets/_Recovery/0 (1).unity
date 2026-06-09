@@ -10185,7 +10185,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 363004467c7256040923d2c2921dd9ed, type: 2}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -17266,8 +17266,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonDoorController
   doorAnim: {fileID: 1294200619276055443}
-  openAnimationName: Door Open
-  closeAnimationName: door close
+  openAnimationName: DoorOpen
+  closeAnimationName: DoorClose
   waitTimer: 1
   pauseInteraction: 0
 --- !u!43 &1393768446
@@ -20952,15 +20952,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6556307555316582679, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 25.06
+      value: -20.54
       objectReference: {fileID: 0}
     - target: {fileID: 6556307555316582679, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.08
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6556307555316582679, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 19.41
+      value: 13.22
       objectReference: {fileID: 0}
     - target: {fileID: 6556307555316582679, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -28343,6 +28343,7 @@ GameObject:
   - component: {fileID: 2073849039}
   - component: {fileID: 2073849038}
   - component: {fileID: 2073849036}
+  - component: {fileID: 2073849040}
   m_Layer: 0
   m_Name: DoorObjectInteract
   m_TagString: Untagged
@@ -28409,6 +28410,25 @@ Transform:
   - {fileID: 1123580498}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2073849040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2073849035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5152e1eaa5e830341a3d447ea70bfc80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonDoorRaycast
+  raylength: 5
+  LayerMaskInteract:
+    serializedVersion: 2
+    m_Bits: 0
+  excludeLayerName: 
+  openDoorKey: 323
+  crosshair: {fileID: 0}
 --- !u!1 &2090621292
 GameObject:
   m_ObjectHideFlags: 0
