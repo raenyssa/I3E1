@@ -46,6 +46,8 @@ public class PlayerHealth : MonoBehaviour
         // Play death effect here (animation, sound, particles, etc.)
         Debug.Log("Player died!");
 
+        DeathUI.Instance?.ShowDeathPopup();
+
         // Respawn after delay instead of reloading the scene
         Invoke(nameof(Respawn), respawnTime);
     }
