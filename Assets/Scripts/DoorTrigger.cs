@@ -10,7 +10,7 @@ public class DoorTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("Player entered the trigger");
-            myDoor.GetComponent<Door>().Interact();
+            myDoor.GetComponent<DoorOnTrigger>().Interact();
         }
 
     }
@@ -19,7 +19,7 @@ public class DoorTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            myDoor.GetComponent<Door>().Interact();
+            myDoor.GetComponent<DoorOnTrigger>().Interact();
         }
 
     }

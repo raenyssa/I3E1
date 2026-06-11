@@ -4,22 +4,22 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    private int totalCoins;
+    public int totalCoins = 0;       // Set this in the Inspector
     private int collectedCoins = 0;
 
     void Awake()
     {
         Instance = this;
-        // Count all coins in the scene at start
-        totalCoins = FindObjectsOfType<Collectables>().Length;
     }
 
     public void CollectCoin()
     {
         collectedCoins++;
-        if (collectedCoins >= totalCoins)
-        {
-            FinalDoor.Instance.OpenDoor();
-        }
+        Debug.Log($"Coins: {collectedCoins}/{totalCoins}");
+    }
+
+    public bool AllCoinsCollected()
+    {
+        return collectedCoins >= totalCoins;
     }
 }

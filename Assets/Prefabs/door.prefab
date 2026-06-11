@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4041387916556420822}
   - component: {fileID: 7651088584342778470}
-  - component: {fileID: 3020186463541291019}
   - component: {fileID: 6477111736060282006}
   m_Layer: 0
   m_Name: door
@@ -56,19 +55,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.5, y: 2, z: 2}
   m_Center: {x: 0.08, y: 0.05, z: 0}
---- !u!114 &3020186463541291019
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5813296573781262733}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7eb7a593a0ca6834e8be1b368245521b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Door
-  rotateAmount: {x: 0, y: 90, z: 0}
 --- !u!95 &6477111736060282006
 Animator:
   serializedVersion: 7

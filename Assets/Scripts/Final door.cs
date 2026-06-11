@@ -3,27 +3,37 @@ using UnityEngine;
 
 public class FinalDoor : MonoBehaviour
 {
-    public static FinalDoor Instance;
+    public Vector3 rotateAmount = new Vector3(0, 90, 0);
+    bool isOpen = false;
 
-    [Header("Animation")]
-    public Animator doorAnimator; // optional, if using Animator
-    public float openAngle = 90f; // optional, if using rotation
-
-    void Awake()
+    public void Interact()
     {
-        Instance = this;
+        if (isOpen)
+        {
+            // Always allow closing
+            SetDoor(false);
+            return;
+        }
+
+        if (!GameManager.Instance.AllCoinsCollected())
+        {
+            Debug.Log("Collect all coins first!");
+            return;
+        }
+
+        SetDoor(true);
     }
 
-    public void OpenDoor()
+    void SetDoor(bool open)
     {
-        // Option A — using Animator
-        if (doorAnimator != null)
-            doorAnimator.SetTrigger("Open");
+        var animator = GetComponent<Animator>();
+        animator.SetBool("isOpen", open);
+        isOpen = open;
+    }
 
-        // Option B — simple rotation (uncomment if not using Animator)
-        // transform.rotation = Quaternion.Euler(0, openAngle, 0);
-
-        // Option C — disable the collider so the player can pass through
-        // GetComponent<Collider>().enabled = false;
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+            Interact();
     }
 }

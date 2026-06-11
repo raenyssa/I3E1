@@ -1,41 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class ButtonDoorController : MonoBehaviour
 {
-    [SerializeField] private Animator doorAnim = null;
+    public Vector3 rotateAmount = new Vector3(0, 90, 0);
+    bool isOpen = false;
 
-    private bool doorOpen = false;
-
-    [SerializeField] private string openAnimationName = "DoorOpen";
-    [SerializeField] private string closeAnimationName = "DoorClose";
-
-    [SerializeField] private int waitTimer = 1;
-    [SerializeField] private bool pauseInteraction = false;
-
-    private IEnumerator PauseDoorInteraction()
+    public void Interact()
     {
-        pauseInteraction = true;
-        yield return new WaitForSeconds(waitTimer);
-        pauseInteraction = false;
-        Debug.Log("Door interaction is now active.");
-    }
+        var animator = GetComponent<Animator>();
+        animator.SetBool("isOpen", !isOpen);
+        isOpen = !isOpen;
+        print("Door Interacted");
 
-    public void PlayAnimation()
-    {
-        if (!doorOpen && !pauseInteraction)
-        {
-            doorAnim.Play(openAnimationName, 0, 0.0f);
-            doorOpen = true;
-            StartCoroutine(PauseDoorInteraction());
-        }
-
-        else if (doorOpen && !pauseInteraction)
-        {
-            doorAnim.Play(closeAnimationName);
-            doorOpen = false;
-            StartCoroutine(PauseDoorInteraction());
-        }
     }
 }
