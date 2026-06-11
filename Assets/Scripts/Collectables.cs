@@ -3,6 +3,7 @@ using UnityEngine;
 public class Collectables : MonoBehaviour
 {
    
+   bool isCollected = false;
    public int value = 1;
 
    public void Collect()
@@ -19,7 +20,10 @@ public class Collectables : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player")&& !isCollected)
+        {
+            isCollected = true;
             Collect();
+        }
     }
 }
