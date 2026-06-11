@@ -7,22 +7,22 @@ public class FinalDoor : MonoBehaviour
     bool isOpen = false;
 
     public void Interact()
+{
+    if (isOpen)
     {
-        if (isOpen)
-        {
-            // Always allow closing
-            SetDoor(false);
-            return;
-        }
-
-        if (!GameManager.Instance.AllCoinsCollected())
-        {
-            Debug.Log("Collect all coins first!");
-            return;
-        }
-
-        SetDoor(true);
+        SetDoor(false);
+        return;
     }
+
+    if (!GameManager.Instance.AllCoinsCollected())
+    {
+        PopupText.Instance.Show("Collect all coins first!", 2.5f);  // ← add this
+        return;
+    }
+
+    PopupText.Instance.Show("Door unlocked!", 2f);  // ← add this
+    SetDoor(true);
+}
 
     void SetDoor(bool open)
     {

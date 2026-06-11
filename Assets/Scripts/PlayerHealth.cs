@@ -54,7 +54,8 @@ public class PlayerHealth : MonoBehaviour
 
     void Respawn()
     {
-        transform.position = respawnPoint != null ? respawnPoint.position : SpawnPosition;
+        transform.position = respawnPoint.position; //!= null ? respawnPoint.position : SpawnPosition;
+        Physics.SyncTransforms(); // Ensure the physics engine updates the position immediately
 
         // Reset health
         currentHealth = maxHealth;
@@ -70,6 +71,12 @@ public class PlayerHealth : MonoBehaviour
     public void ReloadScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void SetRespawnPoint(Transform position)
+    {
+        respawnPoint = position;
+        Debug.Log("Respawn point updated to" + position.position);
     }
 
 }
